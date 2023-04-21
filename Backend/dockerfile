@@ -1,0 +1,15 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0 as BUILD
+
+WORKDIR /app
+
+COPY . /app/
+
+RUN dotnet publish FlashcardAPI -o dist
+
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS RUN
+
+WORKDIR /app
+
+COPY --from=BUILD app/dist .
+
+CMD [ "dotnet", "FlashcardAPI.dll" ]

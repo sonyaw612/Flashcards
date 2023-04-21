@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col"><button class="toggle" (click)="toggleView()">Toggle View</button></div>
+        <div class="col"><button (click)="openFCForm()">Add Flash Card</button></div>
+    </div>
+</div>
+<div class="flashcards-component">
+    <ng-container *ngIf="toggleCards; else cardView">
+        <div>
+            <table class="table">
+                <tr>
+                    <th>Question</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <ng-container *ngFor="let fc of cards">
+                    <tr>
+                        <td>{{fc.question}}</td>
+                        <td><button (click)="editFC(fc.id)">Edit</button></td>
+                        <td><button (click)="deleteFC(fc.id)">Delete</button></td>
+                    </tr>
+                </ng-container>
+            </table>
+        </div>
+    </ng-container>
+    
+    <ng-template #cardView>
+        <div class="cardView">
+            <ng-container *ngFor="let fc of cards" #cardView>
+                
+                <div class="card clickable" (click)="toggleCardAnswer(fc)">
+                    <ng-container *ngIf="!fc.viewAnswer; else showAnswer">
+                        <p>{{fc.question}}</p>
+                    </ng-container>
+                    <ng-template #showAnswer>
+                        <p>{{fc.answer}}</p>
+                    </ng-template>
+                </div>
+                
+                
+            </ng-container>
+        </div>
+    </ng-template>
+</div>
+
+<ng-container *ngIf="addFC">
+    <div class="addFC">
+        <form [formGroup]="fcForm">
+            <label for="question">Question</label><br/>
+            <input type="text" name="question" formControlName="question"/><br/>
+            <label for="answer">Answer</label><br/>
+            <input type="text" name="answer" formControlName="answer"/><br/>
+
+            <button type="submit" (click)="addFCForm($event)">Add Card</button>
+        </form>
+    </div>
+</ng-container>

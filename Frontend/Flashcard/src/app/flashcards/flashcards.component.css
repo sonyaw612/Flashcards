@@ -1,0 +1,24 @@
+
+.cardView {
+    /* text-align: center; */
+    align-items: center;
+}
+
+.card {
+    min-height: 150px;
+    min-width: 200px;
+    max-width: 500px;
+    border: solid 1px black;
+
+
+
+    /* text-align: center;
+    justify-content: center;
+    text-align: center; */
+
+}
+
+.addFC {
+    border: solid 1px rgba(22, 22, 22, 0.897);
+    max-width: 500px;
+}
