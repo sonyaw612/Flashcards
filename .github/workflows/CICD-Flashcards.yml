@@ -62,7 +62,7 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION }}
 #         creds: '{"clientId":"${{ secrets.AZ_APP_CLIENT }}","clientSecret":"${{ secrets.AZ_APP_CLIENT_SECRET_VAL }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION }}","tenantId":"${{ secrets.AZURE_TENANT }}"}'
 #         allow-no-subscriptions: true
-#         enable-AzPSSession: true
+        enable-AzPSSession: true
 #     - run: |
 #         az webapp list --query "[?state=='Running']"
     - name: 'Run az commands'
