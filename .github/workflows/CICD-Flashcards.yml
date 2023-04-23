@@ -54,13 +54,18 @@ jobs:
 #       with:
 #         # Version of CLI to install
 #         version: 2.47.0
-    - uses: azure/login@v1
+    - name: AZ CLI Login
+      uses: azure/login@v1
       with:
-        creds: '{"clientId":"${{ secrets.AZ_APP_CLIENT }}","clientSecret":"${{ secrets.AZ_APP_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION }}","tenantId":"${{ secrets.AZURE_TENANT }}"}'
-        allow-no-subscriptions: true
+        client-id: ${{ secrets.AZ_APP_CLIENT }}
+        tenant-id: ${{ secrets.AZURE_TENANT }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION }}
+    - name: AZ Login
+      run: az login
     - name: Azure WebApp Deployment
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ${{ secrets.AZURE_WEBAPP_NAME }} 
         allow-no-subscriptions: true
         images: ${{ secrets.DOCKER_USERNAME }}/flashcards-backend:0.1
+
