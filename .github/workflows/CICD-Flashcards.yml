@@ -57,18 +57,19 @@ jobs:
     - name: AZ CLI Login
       uses: azure/login@v1
       with:
-#         client-id: ${{ secrets.AZ_APP_CLIENT }}
-#         tenant-id: ${{ secrets.AZURE_TENANT }}
-#         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION }}
-        creds: '{"clientId":"${{ secrets.AZ_APP_CLIENT }}","clientSecret":"${{ secrets.AZ_APP_CLIENT_SECRET_VAL }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION }}","tenantId":"${{ secrets.AZURE_TENANT }}"}'
+        client-id: ${{ secrets.AZ_APP_CLIENT }}
+        tenant-id: ${{ secrets.AZURE_TENANT }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION }}
+#         creds: '{"clientId":"${{ secrets.AZ_APP_CLIENT }}","clientSecret":"${{ secrets.AZ_APP_CLIENT_SECRET_VAL }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION }}","tenantId":"${{ secrets.AZURE_TENANT }}"}'
 #         allow-no-subscriptions: true
 #         enable-AzPSSession: true
-    - run: |
-        az webapp list --query "[?state=='Running']"
-#     - name: 'Run az commands'
-#       run: |
-#         az account show
-#         az group list
+#     - run: |
+#         az webapp list --query "[?state=='Running']"
+    - name: 'Run az commands'
+      run: |
+        az account show
+        az group list
+        pwd 
 
 
 #     - name: Azure WebApp Deployment
