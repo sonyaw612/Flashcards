@@ -51,4 +51,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ${{ secrets.AZURE_WEBAPP_NAME }} 
+        allow-no-subscriptions: true
         images: ${{ secrets.DOCKER_USERNAME }}/flashcards-backend:0.1
