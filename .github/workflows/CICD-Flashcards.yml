@@ -38,8 +38,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: Flashcards/Backend
-          file: Flashcards/Backend/dockerfile
+          context: Backend
+          file: Backend/dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flashcards:0.1
 #   deploy:
