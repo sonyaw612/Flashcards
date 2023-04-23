@@ -54,14 +54,15 @@ jobs:
 #       with:
 #         # Version of CLI to install
 #         version: 2.47.0
+    - name: AZ Login
+      run: az login
     - name: AZ CLI Login
       uses: azure/login@v1
       with:
         client-id: ${{ secrets.AZ_APP_CLIENT }}
         tenant-id: ${{ secrets.AZURE_TENANT }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION }}
-    - name: AZ Login
-      run: az login
+
     - name: Azure WebApp Deployment
       uses: azure/webapps-deploy@v2
       with: 
