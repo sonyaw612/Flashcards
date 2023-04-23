@@ -27,7 +27,6 @@ jobs:
       
       # Runs the docker build
       - name: Buildx
-        id: buildx
         uses: docker/setup-buildx-action@v2
         
       - name: DockerHub login
