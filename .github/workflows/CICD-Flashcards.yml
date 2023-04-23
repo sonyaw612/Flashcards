@@ -62,15 +62,19 @@ jobs:
 #         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION }}
         creds: '{"clientId":"${{ secrets.AZ_APP_CLIENT }}","clientSecret":"${{ secrets.AZ_APP_CLIENT_SECRET_VAL }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION }}","tenantId":"${{ secrets.AZURE_TENANT }}"}'
 #         allow-no-subscriptions: true
-        enable-AzPSSession: true
-    - name: 'Run az commands'
-      run: |
-        az account show
-        az group list
-    - name: Azure WebApp Deployment
-      uses: azure/webapps-deploy@v2
-      with: 
-        app-name: ${{ secrets.AZURE_WEBAPP_NAME }} 
-        allow-no-subscriptions: true
-        images: ${{ secrets.DOCKER_USERNAME }}/flashcards-backend:0.1
+#         enable-AzPSSession: true
+    - run: |
+        az webapp list --query "[?state=='Running']"
+#     - name: 'Run az commands'
+#       run: |
+#         az account show
+#         az group list
+
+
+#     - name: Azure WebApp Deployment
+#       uses: azure/webapps-deploy@v2
+#       with: 
+#         app-name: ${{ secrets.AZURE_WEBAPP_NAME }} 
+#         allow-no-subscriptions: true
+#         images: ${{ secrets.DOCKER_USERNAME }}/flashcards-backend:0.1
 
