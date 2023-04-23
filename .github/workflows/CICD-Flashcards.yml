@@ -60,7 +60,7 @@ jobs:
 #         client-id: ${{ secrets.AZ_APP_CLIENT }}
 #         tenant-id: ${{ secrets.AZURE_TENANT }}
 #         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION }}
-        creds: '{"clientId":"${{ secrets.AZ_APP_CLIENT }}","clientSecret":"${{ secrets.AZ_APP_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION }}","tenantId":"${{ secrets.AZURE_TENANT }}"}'
+        creds: '{"clientId":"${{ secrets.AZ_APP_CLIENT }}","clientSecret":"${{ secrets.AZ_APP_CLIENT_SECRET_VAL }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION }}","tenantId":"${{ secrets.AZURE_TENANT }}"}'
 #         allow-no-subscriptions: true
         enable-AzPSSession: true
     - name: 'Run az commands'
