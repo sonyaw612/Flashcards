@@ -57,9 +57,9 @@ jobs:
     - name: AZ CLI Login
       uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZ_APP_CLIENT }}
-        tenant-id: ${{ secrets.AZURE_TENANT }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION }}
+        clientId: ${{ secrets.AZ_APP_CLIENT }}
+        tenantId: ${{ secrets.AZURE_TENANT }}
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
 #         creds: '{"clientId":"${{ secrets.AZ_APP_CLIENT }}","clientSecret":"${{ secrets.AZ_APP_CLIENT_SECRET_VAL }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION }}","tenantId":"${{ secrets.AZURE_TENANT }}"}'
 #         allow-no-subscriptions: true
         enable-AzPSSession: true
