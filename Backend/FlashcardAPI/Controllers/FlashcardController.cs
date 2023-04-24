@@ -6,7 +6,7 @@ using Models;
 namespace Controllers.FlashcardAPI;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/api/[controller]")]
 public class FlashcardController : ControllerBase {
 
     private readonly FCService _service;
@@ -16,25 +16,32 @@ public class FlashcardController : ControllerBase {
     }
 
     // get all fcs
-    [HttpGet("/")]
+    [HttpGet]
     public List<Flashcard> GetAllFC() {
         return _service.GetAllFCs();
     }
 
+    // get fc by id
+    [HttpGet]
+    [Route("{id}")]
+    public Flashcard GetFC(int id) {
+        return _service.GetFC(id);
+    }
+
     // create fc
-    [HttpPost("/")]
+    [HttpPost]
     public Flashcard CreateFC(Flashcard fc) {
         return _service.CreateFC(fc);
     }
 
     // edit fc
-    [HttpPut("/")]
+    [HttpPut]
     public Flashcard EditFC(Flashcard fc) {
         return _service.EditFC(fc);
     }
 
     // delete fc
-    [HttpDelete("/{id}")]
+    [HttpDelete("{id}")]
     public Flashcard DeleteFC(int id) {
         return _service.DeleteFC(id);
     }

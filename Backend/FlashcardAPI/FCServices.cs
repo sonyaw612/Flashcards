@@ -15,6 +15,11 @@ public class FCService {
         return _context.Flashcards.ToList();
     }
 
+    // get all flashcards
+    public Flashcard GetFC(int id) {
+        return _context.Flashcards.Where(fc => fc.Id == id).SingleOrDefault();
+    }
+
     // create a flashcard
     public Flashcard CreateFC(Flashcard fc) {
         _context.Flashcards.Add(fc);
