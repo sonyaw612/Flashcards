@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Card } from './flashcards/flashcards.component';
 
@@ -8,12 +8,15 @@ import { Card } from './flashcards/flashcards.component';
 })
 export class FlashcardService {
 
-  apiRoot : string = "http://localhost:5296/";
+  apiRoot : string = "http://staging-flashcards.azurewebsites.net/";
 
   constructor(private http : HttpClient) { }
 
   public getFC() : Observable<Array<Card>> {
-    return this.http.get(this.apiRoot) as Observable<Array<Card>>;
+    const headers= new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '')
+      // .set('Access-Control-Allow-Methods', 'GET, POST, DELETE');
+    return this.http.get(this.apiRoot, { 'headers': headers }) as Observable<Array<Card>>;
   }
 
   public addFC(fc : Card) : Observable<Card> {
