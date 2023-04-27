@@ -3,9 +3,11 @@ FROM node:18.15.0 as node
 
 WORKDIR /app
 
+RUN npm install
+RUN npm install -g @angular/cli
+
 COPY . .
 
-RUN npm install
 RUN npm run build --prod
 
 # Stage 2
