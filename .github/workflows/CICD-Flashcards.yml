@@ -43,6 +43,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flashcards-backend:0.1
           
+#  Ensure that the context points to the directory that contains the dockerfile
+
       - name: Build and push - Frontend
         uses: docker/build-push-action@v3
         with:
