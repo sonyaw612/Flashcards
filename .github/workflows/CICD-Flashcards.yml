@@ -35,13 +35,21 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
-      - name: Build and push
+      - name: Build and push - Backend
         uses: docker/build-push-action@v3
         with:
           context: Backend
           file: Backend/dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flashcards-backend:0.1
+          
+      - name: Build and push - Frontend
+        uses: docker/build-push-action@v3
+        with:
+          context: Frontend
+          file: Frontend/Flashcard/dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/flashcards-frontend:0.1
           
 #   deploy:
 #    runs-on: ubuntu-latest
