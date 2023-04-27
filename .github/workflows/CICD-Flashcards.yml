@@ -46,7 +46,7 @@ jobs:
       - name: Build and push - Frontend
         uses: docker/build-push-action@v3
         with:
-          context: Frontend
+          context: Frontend/Flashcard
           file: Frontend/Flashcard/dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flashcards-frontend:0.1
