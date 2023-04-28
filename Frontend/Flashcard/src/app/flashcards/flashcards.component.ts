@@ -8,20 +8,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./flashcards.component.css']
 })
 export class FlashcardsComponent implements OnInit {
-  cards : Card[] = [
-  // { question : "What is my name?",
-  //   answer : "Sonya",
-  //   viewAnswer: false  
-  // },
-  // { question : "What is my favorite color?",
-  //   answer : "Red",
-  //   viewAnswer: false  
-  // },
-  // { question : "What is my favorite cuisine?",
-  //   answer : "Japanese",
-  //   viewAnswer: true  
-  // }
-  ];
+  cards : Card[] = [];
 
   addFCForm : FormGroup = this.fb.group({
     question: new FormControl("", Validators.required),
@@ -61,7 +48,6 @@ export class FlashcardsComponent implements OnInit {
   }
 
   toggleCardAnswer(fc : Card) {
-    console.log(fc.question)
     fc.viewAnswer = !fc.viewAnswer;
   }
 
@@ -88,7 +74,6 @@ export class FlashcardsComponent implements OnInit {
 
   deleteFC(id : any) {
     this._service.deleteFC(id).subscribe(data => {
-      console.log(data)
       this.cards.splice(this.cards.findIndex(c => c.id == data.id), 1)
     })
   }
@@ -106,7 +91,6 @@ export class FlashcardsComponent implements OnInit {
   editFC(id : any) {
     this.tempCard.question = this.editFCForm.controls['question'].value
     this.tempCard.answer = this.editFCForm.controls['answer'].value
-    console.log(this.tempCard);
     this._service.editFC(this.tempCard).subscribe(data => {
       var index = this.cards.findIndex(c => c.id == data.id)
       this.cards[index].question = data.question;
